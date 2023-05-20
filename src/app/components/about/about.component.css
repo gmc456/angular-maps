@@ -1,0 +1,13 @@
+firstRoom:hover {
+    fill: purple;
+    stroke: red;
+    stroke-width: 3px;
+    transition: fill 0.4s;
+  }
+
+  .bar:hover {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+    transition: fill 0.4s;
+}
