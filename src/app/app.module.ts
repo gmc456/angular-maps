@@ -11,6 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { BuildingComponent } from './components/building/building.component';
 import { RoomComponent } from './components/room/room.component';
 import { MapComponent } from './components/map/map.component'
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+import { PiechartComponent } from './components/piechart/piechart.component';
+import { StackedchartComponent } from './components/stackedchart/stackedchart.component'
+import {MaterialExampleModule} from './material.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,13 +28,21 @@ import { MapComponent } from './components/map/map.component'
     NavbarComponent,
     BuildingComponent,
     RoomComponent,
-    MapComponent
+    MapComponent,
+    CanvasJSChart,
+    PiechartComponent,
+    StackedchartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

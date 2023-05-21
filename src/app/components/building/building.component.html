@@ -1,5 +1,5 @@
 <div class="container pt-3" style="display: flex; height: 100px;">
-    <div class="right" style="width: 50%; ">
+    <div style="width: 50%; ">
         <!-- <a href="/home" class="back-link router-link-active">
             <span class="icon-arrow-left"></span>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
@@ -15,8 +15,6 @@
                 </svg>
                 </a> Carr. Sacramento, s/n, 04120 La Cañada, Almería 
         </div>
-    </div>
-    <div class="left" style="flex-grow: 1; text-align: right">
         <div class="mt-2 text-sm flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="90px" height="90px" class="h-4 w-4 inline mr-2">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -25,5 +23,33 @@
             <span class="text-blue ml-1">hace 7 minutos</span>
         </div>
     </div>
+    <div style="flex-grow: 1; text-align: right">        
+        <mat-form-field style="height: 85%;">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>    
+          <div>
+          <button class="testB"> Last update</button>    
+        </div>  
+    </div>    
 </div>
+<div class="container pt-4">
 <app-map></app-map>
+</div>
+<div class="container pt-3" style="display: flex; height: 100px;">
+    <div style="width: 50%; ">
+        <app-piechart></app-piechart>
+    </div>
+    <div style="flex-grow: 1; text-align: right">
+        <app-stackedchart></app-stackedchart>
+    </div>
+</div>
