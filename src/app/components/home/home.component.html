@@ -1,7 +1,7 @@
-<div class="container m-5" *ngFor="let item of items; let i = index">
+<div class="container m-5" *ngFor="let building of buildings; let i = index">
 <div class="row">
     <div class="col-lg-4">
-        <h2><a routerLink="/building">{{item}}</a></h2>
+        <h2><a routerLink="/building" [state]="building">{{building.building}}</a></h2>
         <p>
             Edificio de ciencias naturales.
         </p>
@@ -14,16 +14,16 @@
                     SALAS
                   </button>
                 </h2>
-                <div id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
+                <div *ngFor="let room of building.room" id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
                   <div class="accordion-body">                    
-                    <a routerLink="/about"><strong>Sala 1</strong></a>
+                    <a routerLink="/about"><strong>{{room}}</strong></a>
                   </div>
                 </div>
-                <div id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
+                <!-- <div id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
                     <div class="accordion-body">
                         <a routerLink="/about"><strong>Sala 2</strong></a>
                     </div>
-                  </div>
+                  </div> -->
               </div>
         </div>
     </div>
