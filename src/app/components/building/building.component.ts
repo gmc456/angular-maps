@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ObjectsService } from 'src/app/services/objects.service';
-import { PiechartComponent } from '../piechart/piechart.component';
 
 
 @Component({

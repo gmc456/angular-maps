@@ -14,9 +14,9 @@
                     SALAS
                   </button>
                 </h2>
-                <div *ngFor="let room of building.room" id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
+                <div *ngFor="let room of building.room; ; let j = index" id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">
                   <div class="accordion-body">                    
-                    <a routerLink="/about"><strong>{{room}}</strong></a>
+                    <a routerLink="/room" [state]="{building:building,rooms:j}" ><strong>{{room}}</strong></a>
                   </div>
                 </div>
                 <!-- <div id="{{'panelsStayOpen-collapse' + i}}" class="accordion-collapse collapse" attr.aria-labelledby="{{ 'panelsStayOpen-heading' + i}}">

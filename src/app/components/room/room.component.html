@@ -1,0 +1,57 @@
+<div class="container pt-3" style="display: flex; height: 100px;">
+    <div style="width: 50%; ">
+        <!-- <a href="/home" class="back-link router-link-active">
+            <span class="icon-arrow-left"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+              </svg>
+        </a> -->
+        <h3 class="title"> {{building}} </h3>
+        <h3 class="title"><span>{{room}}</span> </h3>
+        <div class="address inline-flex items-center">
+            <a href="https://maps.google.com/maps?q=Carr. Sacramento, s/n, 04120 La Cañada, Almería, Almería" target="_blank">
+                <svg data-v-7e67ae2d="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" name="LocationMarkerIcon" width="40px" height="40px" class="w-4 h-4 mr-2">
+                    <path data-v-7e67ae2d="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path data-v-7e67ae2d="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                </a> Carr. Sacramento, s/n, 04120 La Cañada, Almería 
+        </div>
+        <!-- <div class="mt-2 text-sm flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="90px" height="90px" class="h-4 w-4 inline mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>            
+            <span>Última actualización</span>: 
+            <span class="text-blue ml-1">hace 7 minutos</span> 
+            <button class="testB"> Last update</button>            
+        </div> -->
+        
+    </div>
+    <div style="flex-grow: 1; text-align: right">        
+        <mat-form-field style="height: 85%;">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+          <div>
+          <mat-form-field style="width: 48%; height: 85%;">
+            <input matInput type="text" formControlName="gaby" placeholder="Ingrese objeto para filtrar">
+          </mat-form-field> 
+        </div>
+          <div>              
+            <button class="button-61" role="button" (click)="calculateValue()">Search</button>
+        </div>  
+    </div>   
+    
+</div>
+<br><br> 
+<div class="container pt-4">
+<app-map></app-map>
+</div>
