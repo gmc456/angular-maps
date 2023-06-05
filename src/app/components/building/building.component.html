@@ -21,11 +21,11 @@
             </svg>            
             <span>Última actualización</span>: 
             <span class="text-blue ml-1">hace 7 minutos</span> -->
-            <button class="testB" *ngIf="showPlots" (click)="getRangePlots(false)"> Last update</button>  
+            <button class="testB" *ngIf="showButtons" (click)="getRangePlots(false)"> Last update</button>  
         </div>
         
     </div>
-    <div style="flex-grow: 1; text-align: right">        
+    <div style="flex-grow: 1; text-align: right">
         <mat-form-field style="height: 85%;">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
@@ -38,9 +38,14 @@
           
             <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
             <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-          </mat-form-field>    
+          </mat-form-field>
+          <div>
+            <mat-form-field [formGroup]="filter" style="width: 42%; height: 45%;">
+                <input matInput formControlName="obj" placeholder="Enter object to filter">
+              </mat-form-field>
+          </div>   
           <div>              
-            <button class="button-61" role="button" *ngIf="showPlots" (click)="getRangePlots(true)">Search</button>
+            <button class="button-61" role="button" *ngIf="showButtons" (click)="getRangePlots(true)">Search</button>
         </div>  
     </div>   
     
