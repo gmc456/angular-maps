@@ -95,7 +95,7 @@ export class BuildingComponent implements OnInit{
             });
 
       } else if((this.range.controls['start'].value === null && this.range.controls['end'].value === null) && 
-        this.filter.controls['obj'].value !== null){
+        (this.filter.controls['obj'].value !== null || this.filter.controls['obj'].value === '')){
           //this.showPlots = false;
 
           console.log('Without Ranges enter')

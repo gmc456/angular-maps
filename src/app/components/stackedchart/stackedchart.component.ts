@@ -26,6 +26,8 @@ export class StackedchartComponent {
       this.resetData();
       if(data !== null && data.length !== 0){
         this.objects = data;
+        console.log(this.objects)
+        console.log(this.labels)
         if(this.objects[0].hasOwnProperty("tobjects")){
           this.objects.forEach((element: any) => {   
             this.labels.push(element._id)
@@ -69,6 +71,7 @@ export class StackedchartComponent {
     resetData(){
       this.labels.splice(0);
       this.datasets.splice(0);
+      this.commomObjs.splice(0);
       this.i = 0;
     }
 

@@ -1,12 +1,19 @@
+<div style="margin-left:250px; width:100%;">
 <div class="container m-5" *ngFor="let building of buildings; let i = index">
 <div class="row">
-    <div class="col-lg-4">
-        <h2><a routerLink="/building" [state]="{building:building,rooms:null}">{{building.building}}</a></h2>
-        <p>
-            Edificio de ciencias naturales.
-        </p>
+  <!-- <div >
+    <img src="/assets/imgs/building.jpeg" alt="Girl in a jacket" style="width:200px;height:140px;">
+  </div> -->
+  
+    <div class="col-lg-2">
+      <img src="/assets/imgs/building.jpeg" alt="Girl in a jacket" style="width:200px;height:160px;">
+        
     </div>
     <div class="col-lg-8">
+      <h1><a routerLink="/building" [state]="{building:building,rooms:null}">{{building.building}}</a></h1>        
+        <p>
+            Selecciona una sala dentro del desplegable.
+        </p>
         <div class="accordion" id="{{ 'accordionPanelsStayOpen' + i}}">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="{{ 'panelsStayOpen-heading' + i}}">
@@ -31,3 +38,4 @@
 <hr>
 </div>
 
+</div>
