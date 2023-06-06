@@ -12,7 +12,8 @@ import { ObjectsService } from 'src/app/services/objects.service';
 export class BuildingComponent implements OnInit{
 
   @Input() building: any;
-  //@Input() data: any;
+  @Input() data: any;
+  @Input() room: any;
   message:string = "";
   showPlots:boolean = false;
   showButtons:boolean = false;  
@@ -20,13 +21,31 @@ export class BuildingComponent implements OnInit{
   obj:object = new Object();
 	dataToShow:Array<Object> = [];
   sendObjects:any;
+  auxRooms: string[] = [];
 
   constructor(public activatedRoute: ActivatedRoute,
     private objectsService: ObjectsService ) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(()=> {
-      this.building = window.history.state;      
+      //this.building = window.history.state; 
+      
+      this.data = window.history.state;
+      console.log(this.data)
+      this.building = this.data.building.building;
+      console.log(this.building)
+      //console.log(this.obj.building.building.room)
+      this.auxRooms = this.data.building.room
+
+      this.message = this.auxRooms[this.data.rooms]
+      if(this.data.rooms !== null){
+        console.log("entro aqui")
+        this.showPlots = true;
+        this.showButtons = true;
+        this.getRangePlots(false)
+        this.sendObjects =  [];
+      }
+      
     });
   }
 
@@ -52,6 +71,7 @@ export class BuildingComponent implements OnInit{
   } 
 
   getRangePlots(flag:boolean) {
+    console.log(this.building + "." + this.message)
     console.log('Type of search ' + this.filter.controls['obj'].value)
     if(flag){
       if((this.range.controls['start'].value !== null && this.range.controls['end'].value !== null) && 
@@ -59,7 +79,7 @@ export class BuildingComponent implements OnInit{
           //this.showPlots = false;
           //Devolver cantidad total de apariciones del objeto seccionado por dias al igual que las otras llamadas
           console.log('Ranges enter -> ' + "gg")
-          this.objectsService.getDetectedObjects(this.filter.controls['obj'].value, this.message, this.building.building,
+          this.objectsService.getDetectedObjects(this.filter.controls['obj'].value, this.message, this.building,
             this.range.controls['start'].value, this.range.controls['end'].value).subscribe((res) => { 
             this.sendObjects = res; 
             });
@@ -69,7 +89,7 @@ export class BuildingComponent implements OnInit{
           //this.showPlots = true;
 
           console.log('Ranges enter')
-          this.objectsService.getFullDetectedObjectsFull(this.message, this.building.building,
+          this.objectsService.getFullDetectedObjectsFull(this.message, this.building,
             this.range.controls['start'].value, this.range.controls['end'].value).subscribe((res) => { 
             this.sendObjects = res; 
             });
@@ -80,14 +100,14 @@ export class BuildingComponent implements OnInit{
 
           console.log('Without Ranges enter')
           console.log('Ranges enter -> ' + this.filter.controls['obj'].value)
-          this.objectsService.getCurrentDetectedObjects(this.filter.controls['obj'].value, this.message, this.building.building).subscribe((res) => { 
+          this.objectsService.getCurrentDetectedObjects(this.filter.controls['obj'].value, this.message, this.building).subscribe((res) => { 
             this.sendObjects = res        
           });
       }      
     }else{      
       //this.showPlots = true;
       console.log('Without Ranges enter')
-        this.objectsService.getCurrentDetectedObjectsFull(this.message, this.building.building).subscribe((res) => { 
+        this.objectsService.getCurrentDetectedObjectsFull(this.message, this.building).subscribe((res) => { 
         this.sendObjects = res        
       });
     }    
