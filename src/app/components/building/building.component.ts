@@ -71,14 +71,11 @@ export class BuildingComponent implements OnInit{
   } 
 
   getRangePlots(flag:boolean) {
-    console.log(this.building + "." + this.message)
-    console.log('Type of search ' + this.filter.controls['obj'].value)
     if(flag){
       if((this.range.controls['start'].value !== null && this.range.controls['end'].value !== null) && 
         this.filter.controls['obj'].value !== null){
           //this.showPlots = false;
           //Devolver cantidad total de apariciones del objeto seccionado por dias al igual que las otras llamadas
-          console.log('Ranges enter -> ' + "gg")
           this.objectsService.getDetectedObjects(this.filter.controls['obj'].value, this.message, this.building,
             this.range.controls['start'].value, this.range.controls['end'].value).subscribe((res) => { 
             this.sendObjects = res; 
@@ -87,8 +84,7 @@ export class BuildingComponent implements OnInit{
       } else if((this.range.controls['start'].value !== null && this.range.controls['end'].value !== null) && 
         this.filter.controls['obj'].value === null){
           //this.showPlots = true;
-
-          console.log('Ranges enter')
+          console.log(this.range.controls['start'].value)
           this.objectsService.getFullDetectedObjectsFull(this.message, this.building,
             this.range.controls['start'].value, this.range.controls['end'].value).subscribe((res) => { 
             this.sendObjects = res; 
@@ -98,15 +94,12 @@ export class BuildingComponent implements OnInit{
         (this.filter.controls['obj'].value !== null || this.filter.controls['obj'].value === '')){
           //this.showPlots = false;
 
-          console.log('Without Ranges enter')
-          console.log('Ranges enter -> ' + this.filter.controls['obj'].value)
           this.objectsService.getCurrentDetectedObjects(this.filter.controls['obj'].value, this.message, this.building).subscribe((res) => { 
             this.sendObjects = res        
           });
       }      
     }else{      
       //this.showPlots = true;
-      console.log('Without Ranges enter')
         this.objectsService.getCurrentDetectedObjectsFull(this.message, this.building).subscribe((res) => { 
         this.sendObjects = res        
       });
